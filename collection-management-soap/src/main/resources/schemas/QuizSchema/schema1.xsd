@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	version="1.0"
+	targetNamespace="http://www.mile.com/collection/management/soap/Quiz"
+	xmlns="http://www.mile.com/collection/management/soap/Quiz"
+	elementFormDefault="qualified">
+
+
+	<!-- Data manipulators -->
+	<xs:element name="answer" type="answer"></xs:element>
+	<xs:element name="question" type="question"></xs:element>
+	<xs:element name="category" type="category"></xs:element>
+
+	<xs:complexType name="answer">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="categories" nillable="true" type="category" />
+			<xs:element minOccurs="0" name="id" type="xs:long" />
+			<xs:element minOccurs="0" name="question" type="question" />
+			<xs:element minOccurs="0" name="value" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="category">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="answers" nillable="true" type="answer" />
+			<xs:element minOccurs="0" name="id" type="xs:long" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="questions" nillable="true" type="question" />
+			<xs:element minOccurs="0" name="value" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="question">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="answers" nillable="true" type="answer" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="categories" nillable="true" type="category" />
+			<xs:element minOccurs="0" name="id" type="xs:long" />
+			<xs:element minOccurs="0" name="value" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- REQUESTS -->
+
+	<xs:element name="deleteAnswerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="answersForQuestionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="uploadQuestionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="val" type="xs:string"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCategoriesRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- RESPONSES -->
+
+	<xs:element name="answersResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0"
+					name="answers" nillable="true" type="answer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="affectedRowsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="categoriesResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0"
+					name="categories" nillable="true" type="category" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="questionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="question" type="question" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+</xs:schema>

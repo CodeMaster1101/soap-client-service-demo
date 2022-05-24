@@ -1,0 +1,194 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.mile.com/collection/management/soap/Quiz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.mile.com/collection/management/soap/Quiz" targetNamespace="http://www.mile.com/collection/management/soap/Quiz">
+<wsdl:types>
+<xs:schema xmlns="http://www.mile.com/collection/management/soap/Quiz" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mile.com/collection/management/soap/Quiz" version="1.0">
+<!--  Data manipulators  -->
+<xs:element name="answer" type="answer"/>
+<xs:element name="question" type="question"/>
+<xs:element name="category" type="category"/>
+<xs:complexType name="answer">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" nillable="true" type="category"/>
+<xs:element minOccurs="0" name="id" type="xs:long"/>
+<xs:element minOccurs="0" name="question" type="question"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="category">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="answer"/>
+<xs:element minOccurs="0" name="id" type="xs:long"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="questions" nillable="true" type="question"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="question">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" nillable="true" type="category"/>
+<xs:element minOccurs="0" name="id" type="xs:long"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<!--  REQUESTS  -->
+<xs:element name="deleteAnswerRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="answersForQuestionRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="uploadQuestionRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="val" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getCategoriesRequest">
+<xs:complexType> </xs:complexType>
+</xs:element>
+<!--  RESPONSES  -->
+<xs:element name="answersResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="answer"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="affectedRowsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="result" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="categoriesResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" nillable="true" type="category"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="questionResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="question" type="question"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="answersResponse">
+<wsdl:part element="tns:answersResponse" name="answersResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="answersForQuestionRequest">
+<wsdl:part element="tns:answersForQuestionRequest" name="answersForQuestionRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="affectedRowsResponse">
+<wsdl:part element="tns:affectedRowsResponse" name="affectedRowsResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="categoriesResponse">
+<wsdl:part element="tns:categoriesResponse" name="categoriesResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="questionResponse">
+<wsdl:part element="tns:questionResponse" name="questionResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteAnswerRequest">
+<wsdl:part element="tns:deleteAnswerRequest" name="deleteAnswerRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getCategoriesRequest">
+<wsdl:part element="tns:getCategoriesRequest" name="getCategoriesRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="uploadQuestionRequest">
+<wsdl:part element="tns:uploadQuestionRequest" name="uploadQuestionRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="QuizMainEndPoint">
+<wsdl:operation name="answers">
+<wsdl:output message="tns:answersResponse" name="answersResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="answersForQuestion">
+<wsdl:input message="tns:answersForQuestionRequest" name="answersForQuestionRequest"> </wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="affectedRows">
+<wsdl:output message="tns:affectedRowsResponse" name="affectedRowsResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="categories">
+<wsdl:output message="tns:categoriesResponse" name="categoriesResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="question">
+<wsdl:output message="tns:questionResponse" name="questionResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteAnswer">
+<wsdl:input message="tns:deleteAnswerRequest" name="deleteAnswerRequest"> </wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="getCategories">
+<wsdl:input message="tns:getCategoriesRequest" name="getCategoriesRequest"> </wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="uploadQuestion">
+<wsdl:input message="tns:uploadQuestionRequest" name="uploadQuestionRequest"> </wsdl:input>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="QuizMainEndPointSoap11" type="tns:QuizMainEndPoint">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="answers">
+<soap:operation soapAction=""/>
+<wsdl:output name="answersResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="answersForQuestion">
+<soap:operation soapAction=""/>
+<wsdl:input name="answersForQuestionRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="affectedRows">
+<soap:operation soapAction=""/>
+<wsdl:output name="affectedRowsResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="categories">
+<soap:operation soapAction=""/>
+<wsdl:output name="categoriesResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="question">
+<soap:operation soapAction=""/>
+<wsdl:output name="questionResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteAnswer">
+<soap:operation soapAction=""/>
+<wsdl:input name="deleteAnswerRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="getCategories">
+<soap:operation soapAction=""/>
+<wsdl:input name="getCategoriesRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+</wsdl:operation>
+<wsdl:operation name="uploadQuestion">
+<soap:operation soapAction=""/>
+<wsdl:input name="uploadQuestionRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="QuizMainEndPointService">
+<wsdl:port binding="tns:QuizMainEndPointSoap11" name="QuizMainEndPointSoap11">
+<soap:address location="http://localhost:8083/ws"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
