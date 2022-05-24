@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.mile.collection.management.soap.bottomUp.Category;
 
-@XmlRootElement(name = "CategoryResponse")
+@XmlRootElement(name = "CategoriesResponse")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Category.class)
 public class CategoriesResponse {

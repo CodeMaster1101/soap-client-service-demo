@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "deleteAnswerRequest")
+@XmlRootElement(name = "DeleteAnswerRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeleteAnswerRequest {
 	

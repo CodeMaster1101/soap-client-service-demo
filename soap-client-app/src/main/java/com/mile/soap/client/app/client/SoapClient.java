@@ -20,7 +20,7 @@ public class SoapClient {
 	@Autowired WebServiceTemplate template;
 	
 	public CategoriesResponse getCategories() {
-		return (CategoriesResponse) template.marshalSendAndReceive("http://localhost:8083/ws", new GetCategoriesRequest());
+		return  (CategoriesResponse) template.marshalSendAndReceive("http://localhost:8083/ws", new GetCategoriesRequest());
 	}
 
 	public AnswersResponse getAnswersForQuestion(long id) {

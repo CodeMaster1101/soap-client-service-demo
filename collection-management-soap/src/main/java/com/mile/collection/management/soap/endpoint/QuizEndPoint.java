@@ -23,25 +23,25 @@ public class QuizEndPoint {
 	@Autowired QuizService service;
 
 	@ResponsePayload
-	@PayloadRoot(namespace = NAMESPACE, localPart = "answersForQuestionRequest" )
+	@PayloadRoot(namespace = NAMESPACE, localPart = "AnswersForQuestionRequest" )
 	public AnswersResponse answerBasedOnQuestion(@RequestPayload AnswersForQuestionRequest request) {
 		return new AnswersResponse(service.getAnswersForQuestion(request.getId()));
 	}
 	
 	@ResponsePayload
-	@PayloadRoot(namespace = NAMESPACE, localPart = "uploadQuestionRequest" )
+	@PayloadRoot(namespace = NAMESPACE, localPart = "UploadQuestionRequest" )
 	public AffectedRowsResponse uploadNewQuestion(@RequestPayload UploadQuestionRequest request) {
 		return new AffectedRowsResponse(service.uploadNewQuestion(request));
 	}
 	
 	@ResponsePayload
-	@PayloadRoot(namespace = NAMESPACE, localPart = "deleteAnswerRequest" )
+	@PayloadRoot(namespace = NAMESPACE, localPart = "DeleteAnswerRequest" )
 	public AffectedRowsResponse answerBasedOnQuestion(@RequestPayload DeleteAnswerRequest request) {
 		return new AffectedRowsResponse(service.removeAnswer(request.getId()));
 	}
 	
 	@ResponsePayload
-	@PayloadRoot(namespace = NAMESPACE, localPart = "getCategoriesRequest")
+	@PayloadRoot(namespace = NAMESPACE, localPart = "GetCategoriesRequest")
 	public CategoriesResponse answerBasedOnQuestion(@RequestPayload GetCategoriesRequest request) {
 		return new CategoriesResponse(service.getCategories());
 	}

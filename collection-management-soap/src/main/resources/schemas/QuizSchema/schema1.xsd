@@ -7,9 +7,9 @@
 
 
 	<!-- Data manipulators -->
-	<xs:element name="answer" type="answer"></xs:element>
-	<xs:element name="question" type="question"></xs:element>
-	<xs:element name="category" type="category"></xs:element>
+	<xs:element name="Answer" type="answer"></xs:element>
+	<xs:element name="Question" type="question"></xs:element>
+	<xs:element name="Category" type="category"></xs:element>
 
 	<xs:complexType name="answer">
 		<xs:sequence>
@@ -45,7 +45,7 @@
 
 	<!-- REQUESTS -->
 
-	<xs:element name="deleteAnswerRequest">
+	<xs:element name="DeleteAnswerRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:long"></xs:element>
@@ -53,7 +53,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="answersForQuestionRequest">
+	<xs:element name="AnswersForQuestionRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:long"></xs:element>
@@ -61,7 +61,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="uploadQuestionRequest">
+	<xs:element name="UploadQuestionRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element minOccurs="0" name="val" type="xs:string"></xs:element>
@@ -69,14 +69,14 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="getCategoriesRequest">
+	<xs:element name="GetCategoriesRequest">
 		<xs:complexType>
 		</xs:complexType>
 	</xs:element>
 
 	<!-- RESPONSES -->
 
-	<xs:element name="answersResponse">
+	<xs:element name="AnswersResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" minOccurs="0"
@@ -85,7 +85,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="affectedRowsResponse">
+	<xs:element name="AffectedRowsResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="result" type="xs:int" />
@@ -93,7 +93,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="categoriesResponse">
+	<xs:element name="CategoriesResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" minOccurs="0"
@@ -102,13 +102,12 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="questionResponse">
+	<xs:element name="QuestionResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element minOccurs="0" name="question" type="question" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
 
 </xs:schema>

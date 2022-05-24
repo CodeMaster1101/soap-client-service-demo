@@ -3,19 +3,35 @@ package com.mile.collection.management.soap.bottomUp;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.stereotype.Component;
 
 
-@Table(value = "question")
+@Table(value = "Question")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "question", propOrder = {
+    "answers",
+    "categories",
+    "id",
+    "value"
+})
 @Component
 public class Question {
-
-    @Id
+	
+    @Id 
+    @XmlElement(required = true)
 	private Long id;
+    @XmlElement(required = true)
 	private String value;
+    @XmlElement(nillable = true)
 	private Set<Answer> answers = new HashSet<>();
+    @XmlElement(nillable = true)
 	private Set<Category> categories = new HashSet<>();
 
 	public Question() {}

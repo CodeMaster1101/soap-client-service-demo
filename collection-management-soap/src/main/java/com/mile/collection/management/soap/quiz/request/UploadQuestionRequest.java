@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "uploadQuestionRequest")
+@XmlRootElement(name = "UploadQuestionRequest")
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UploadQuestionRequest {
