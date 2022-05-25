@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "3918f5e0-cdf9-45df-8a10-cd87744a8ff0",
+		"name": "Quiz Soap Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17766616"
+	},
+	"item": [
+		{
+			"name": "AnswersForQuestion",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Categories",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "delete answer by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{mainUrl}}/deleteAnswerById",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"deleteAnswerById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{mainUrl}}/uploadQuestion",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"uploadQuestion"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mainUrl",
+			"value": "http://localhost:9072",
+			"type": "string"
+		}
+	]
+}
