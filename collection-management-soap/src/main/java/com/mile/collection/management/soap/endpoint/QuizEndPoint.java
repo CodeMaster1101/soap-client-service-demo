@@ -6,13 +6,13 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.mile.collection.management.soap.quiz.request.AnswersForQuestionRequest;
-import com.mile.collection.management.soap.quiz.request.DeleteAnswerRequest;
-import com.mile.collection.management.soap.quiz.request.GetCategoriesRequest;
-import com.mile.collection.management.soap.quiz.request.UploadQuestionRequest;
-import com.mile.collection.management.soap.quiz.response.AffectedRowsResponse;
-import com.mile.collection.management.soap.quiz.response.AnswersResponse;
-import com.mile.collection.management.soap.quiz.response.CategoriesResponse;
+import com.mile.collection.management.soap.quiz.AffectedRowsResponse;
+import com.mile.collection.management.soap.quiz.AnswersForQuestionRequest;
+import com.mile.collection.management.soap.quiz.AnswersResponse;
+import com.mile.collection.management.soap.quiz.CategoriesResponse;
+import com.mile.collection.management.soap.quiz.DeleteAnswerRequest;
+import com.mile.collection.management.soap.quiz.GetCategoriesRequest;
+import com.mile.collection.management.soap.quiz.UploadQuestionRequest;
 import com.mile.collection.management.soap.service.QuizService;
 
 @Endpoint

@@ -8,9 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mile.collection.management.soap.bottomUp.Answer;
-import com.mile.collection.management.soap.bottomUp.Category;
-import com.mile.collection.management.soap.bottomUp.Question;
+import com.mile.collection.management.soap.quiz.Answer;
+import com.mile.collection.management.soap.quiz.Category;
+import com.mile.collection.management.soap.quiz.Question;
 import com.mile.collection.management.soap.repository.mapper.CategoryMapper;
 
 import lombok.Getter;
@@ -39,17 +39,17 @@ public class CategoryRepository {
 				o.getId(), o.getValue()
 		});
 		
-		if(o.getQuestions().size() > 0) {
-			Question[] questions = o.getQuestions().toArray(new Question[o.getQuestions().size()]);
-			for(int i = 0; i < o.getQuestions().size();i++) {
+		if(o.getQuestion().size() > 0) {
+			Question[] questions = o.getQuestion().toArray(new Question[o.getQuestion().size()]);
+			for(int i = 0; i < o.getQuestion().size();i++) {
 				template.update("INSERT INTO quiz.questions_category (category_id,question_id) values(?,?)", 
 						o.getId(), questions[i].getId());
 			}
 		}
 		
-		if(o.getAnswers().size() > 0) {
-			Answer[] answers = o.getAnswers().toArray(new Answer[o.getAnswers().size()]);
-			for(int i = 0; i < o.getAnswers().size();i++) {
+		if(o.getAnswer().size() > 0) {
+			Answer[] answers = o.getAnswer().toArray(new Answer[o.getAnswer().size()]);
+			for(int i = 0; i < o.getAnswer().size();i++) {
 				template.update("INSERT INTO quiz.answers_category (category_id,answer_id) values(?,?)", 
 						o.getId(), answers[i].getId());
 			}

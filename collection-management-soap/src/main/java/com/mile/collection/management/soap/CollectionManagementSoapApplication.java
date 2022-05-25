@@ -2,15 +2,10 @@ package com.mile.collection.management.soap;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.mile.collection.management.soap.repository.AnswerRepository;
-import com.mile.collection.management.soap.repository.CategoryRepository;
-import com.mile.collection.management.soap.repository.QuestionRepository;
 
 @SpringBootApplication @RestController
 public class CollectionManagementSoapApplication {
@@ -22,10 +17,10 @@ public class CollectionManagementSoapApplication {
 		
 	}
 
-	@Autowired AnswerRepository answerRepository;
-	@Autowired CategoryRepository categoryRepository;
-	@Autowired QuestionRepository questionRepository;
-	
+//	@Autowired AnswerRepository answerRepository;
+//	@Autowired CategoryRepository categoryRepository;
+//	@Autowired QuestionRepository questionRepository;
+//	
 	@Transactional
 	@PostConstruct
 	private void init() {

@@ -35,6 +35,6 @@ public class SoapConfiguration {
 
 	@Bean
 	public XsdSchema schema() {
-		return new SimpleXsdSchema(new ClassPathResource("/schemas/QuizSchema/schema1.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("/schemas/QuizSchema/quiz.xsd"));
 	}
 }

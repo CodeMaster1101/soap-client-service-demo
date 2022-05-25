@@ -14,8 +14,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mile.collection.management.soap.bottomUp.Answer;
-import com.mile.collection.management.soap.bottomUp.Category;
+import com.mile.collection.management.soap.quiz.Answer;
+import com.mile.collection.management.soap.quiz.Category;
 import com.mile.collection.management.soap.repository.mapper.AnswerRowMapper;
 
 @Repository
@@ -35,9 +35,9 @@ public class AnswerRepository {
 			sequenceRepository.increment();
 		}
 		//idOverlapping(o.getId(), null, counter); -> add 2nd argument as findById(sequence);
-		if(o.getCategories().size() > 0) {
-			Category[] categories = o.getCategories().toArray(new Category[o.getCategories().size()]);
-			for(int i = 0; i < o.getCategories().size();i++) {
+		if(o.getCategory().size() > 0) {
+			Category[] categories = o.getCategory().toArray(new Category[o.getCategory().size()]);
+			for(int i = 0; i < o.getCategory().size();i++) {
 				template.update("INSERT INTO quiz.answers_category (answer_id,category_id) values(?,?)", 
 						o.getId(), categories[i].getId());
 			}

@@ -11,8 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mile.collection.management.soap.bottomUp.Category;
-import com.mile.collection.management.soap.bottomUp.Question;
+import com.mile.collection.management.soap.quiz.Category;
+import com.mile.collection.management.soap.quiz.Question;
 import com.mile.collection.management.soap.repository.mapper.QuestionRowMapper;
 
 import lombok.Getter;
@@ -39,9 +39,9 @@ public class QuestionRepository {
 				o.getId(), o.getValue()
 		});
 		
-		if(o.getCategories().size() > 0) {
-			Category[] categories = o.getCategories().toArray(new Category[o.getCategories().size()]);
-			for(int i = 0; i < o.getCategories().size();i++) {
+		if(o.getCategory().size() > 0) {
+			Category[] categories = o.getCategory().toArray(new Category[o.getCategory().size()]);
+			for(int i = 0; i < o.getCategory().size();i++) {
 				template.update("INSERT INTO quiz.questions_category (question_id,category_id) values(?,?)", 
 						o.getId(), categories[i].getId());
 			}

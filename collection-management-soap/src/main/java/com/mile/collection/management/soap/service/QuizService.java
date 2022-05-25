@@ -1,17 +1,15 @@
 package com.mile.collection.management.soap.service;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mile.collection.management.soap.bottomUp.Answer;
-import com.mile.collection.management.soap.bottomUp.Category;
-import com.mile.collection.management.soap.bottomUp.Question;
-import com.mile.collection.management.soap.quiz.request.UploadQuestionRequest;
+import com.mile.collection.management.soap.quiz.Answer;
+import com.mile.collection.management.soap.quiz.Category;
+import com.mile.collection.management.soap.quiz.Question;
+import com.mile.collection.management.soap.quiz.UploadQuestionRequest;
 import com.mile.collection.management.soap.repository.AnswerRepository;
 import com.mile.collection.management.soap.repository.CategoryRepository;
 import com.mile.collection.management.soap.repository.QuestionRepository;
@@ -24,13 +22,13 @@ public class QuizService {
 	@Autowired CategoryRepository categoryRepository;
 	
 	//DONE
-	public Set<Answer> getAnswersForQuestion(long id) {
-		return answerRepository.answersBasedOnQuestion(id).stream().collect(Collectors.toSet());
+	public List<Answer> getAnswersForQuestion(long id) {
+		return answerRepository.answersBasedOnQuestion(id);
 	}
 
 	
 	public int uploadNewQuestion(UploadQuestionRequest question) {
-		return questionRepository.save(new Question(null, question.getVal(), new HashSet<>(), new HashSet<>()));
+		return questionRepository.save(new Question(null, question.getVal(), new ArrayList<>(), new ArrayList<>()));
 		
 	}
 	

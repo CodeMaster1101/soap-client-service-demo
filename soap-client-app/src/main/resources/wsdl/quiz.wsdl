@@ -1,31 +1,37 @@
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.mile.com/collection/management/soap/Quiz" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.mile.com/collection/management/soap/Quiz" targetNamespace="http://www.mile.com/collection/management/soap/Quiz">
 <wsdl:types>
-<xs:schema xmlns="http://www.mile.com/collection/management/soap/Quiz" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mile.com/collection/management/soap/Quiz" version="1.0">
+<xs:schema xmlns:qz="http://www.mile.com/collection/management/soap/Quiz" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mile.com/collection/management/soap/Quiz" version="1.0">
 <!--  Data manipulators  -->
-<xs:complexType name="Answer">
+<xs:element name="Answer">
+<xs:complexType>
 <xs:sequence>
 <xs:element minOccurs="0" name="id" type="xs:long"/>
 <xs:element minOccurs="0" name="value" type="xs:string"/>
-<xs:element minOccurs="0" name="Question" type="Question"/>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" nillable="true" type="Category"/>
+<xs:element minOccurs="0" ref="qz:Question"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Category"/>
 </xs:sequence>
 </xs:complexType>
-<xs:complexType name="Category">
+</xs:element>
+<xs:element name="Question">
+<xs:complexType>
 <xs:sequence>
 <xs:element minOccurs="0" name="id" type="xs:long"/>
 <xs:element minOccurs="0" name="value" type="xs:string"/>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="Answer"/>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="questions" nillable="true" type="Question"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Category"/>
 </xs:sequence>
 </xs:complexType>
-<xs:complexType name="Question">
+</xs:element>
+<xs:element name="Category">
+<xs:complexType>
 <xs:sequence>
 <xs:element minOccurs="0" name="id" type="xs:long"/>
 <xs:element minOccurs="0" name="value" type="xs:string"/>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="Answer"/>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" nillable="true" type="Category"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Question"/>
 </xs:sequence>
 </xs:complexType>
+</xs:element>
 <!--  REQUESTS  -->
 <xs:element name="DeleteAnswerRequest">
 <xs:complexType>
@@ -55,7 +61,7 @@
 <xs:element name="AnswersResponse">
 <xs:complexType>
 <xs:sequence>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="answers" nillable="true" type="Answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Answer"/>
 </xs:sequence>
 </xs:complexType>
 </xs:element>
@@ -69,14 +75,14 @@
 <xs:element name="CategoriesResponse">
 <xs:complexType>
 <xs:sequence>
-<xs:element maxOccurs="unbounded" minOccurs="0" name="categories" type="Category"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="qz:Category"/>
 </xs:sequence>
 </xs:complexType>
 </xs:element>
 <xs:element name="QuestionResponse">
 <xs:complexType>
 <xs:sequence>
-<xs:element minOccurs="0" name="Question" type="Question"/>
+<xs:element minOccurs="0" ref="qz:Question"/>
 </xs:sequence>
 </xs:complexType>
 </xs:element>

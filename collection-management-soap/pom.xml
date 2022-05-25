@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.mile</groupId>
 	<artifactId>collection-management-soap</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>collection-management-soap</name>
 	<description>reforming certain collections based on endpoint</description>
 	<properties>
@@ -75,17 +75,13 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>1.6</version>
 				<executions>
-				
 				</executions>
 				<configuration>
-				<clearOutputDir>true</clearOutputDir>
-					<sources>
-						<source>C:\Users\ThinkBook15\Desktop\SOAP\collection-management-soap\src\main\java\com\mile\collection\management\soap\quiz\request</source>
-						<source>C:\Users\ThinkBook15\Desktop\SOAP\collection-management-soap\src\main\java\com\mile\collection\management\soap\quiz\response</source>
-					</sources>
-					<outputDirectory>C:\Users\ThinkBook15\Desktop\SOAP\collection-management-soap\src\main\resources\schemas\QuizSchema</outputDirectory>
+					<schemaDirectory>${project.basedir}/src/main/resources/schemas/QuizSchema/</schemaDirectory>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
 		</plugins>
