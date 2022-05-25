@@ -7,39 +7,37 @@
 
 
 	<!-- Data manipulators -->
-	<xs:element name="Answer" type="answer"></xs:element>
-	<xs:element name="Question" type="question"></xs:element>
-	<xs:element name="Category" type="category"></xs:element>
 
-	<xs:complexType name="answer">
+	<xs:complexType name="Answer">
 		<xs:sequence>
-			<xs:element maxOccurs="unbounded" minOccurs="0"
-				name="categories" nillable="true" type="category" />
 			<xs:element minOccurs="0" name="id" type="xs:long" />
-			<xs:element minOccurs="0" name="question" type="question" />
 			<xs:element minOccurs="0" name="value" type="xs:string" />
+			<xs:element minOccurs="0" name="Question" type="Question" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="categories" nillable="true" type="Category" />
+
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="category">
+	<xs:complexType name="Category">
 		<xs:sequence>
-			<xs:element maxOccurs="unbounded" minOccurs="0"
-				name="answers" nillable="true" type="answer" />
 			<xs:element minOccurs="0" name="id" type="xs:long" />
-			<xs:element maxOccurs="unbounded" minOccurs="0"
-				name="questions" nillable="true" type="question" />
 			<xs:element minOccurs="0" name="value" type="xs:string" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="answers" nillable="true" type="Answer" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="questions" nillable="true" type="Question" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="question">
+	<xs:complexType name="Question">
 		<xs:sequence>
-			<xs:element maxOccurs="unbounded" minOccurs="0"
-				name="answers" nillable="true" type="answer" />
-			<xs:element maxOccurs="unbounded" minOccurs="0"
-				name="categories" nillable="true" type="category" />
 			<xs:element minOccurs="0" name="id" type="xs:long" />
 			<xs:element minOccurs="0" name="value" type="xs:string" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="answers" nillable="true" type="Answer" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="categories" nillable="true" type="Category" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -80,7 +78,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" minOccurs="0"
-					name="answers" nillable="true" type="answer" />
+					name="answers" nillable="true" type="Answer" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -97,7 +95,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element maxOccurs="unbounded" minOccurs="0"
-					name="categories" nillable="true" type="category" />
+					name="categories" type="Category" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -105,7 +103,7 @@
 	<xs:element name="QuestionResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element minOccurs="0" name="question" type="question" />
+				<xs:element minOccurs="0" name="Question" type="Question" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
