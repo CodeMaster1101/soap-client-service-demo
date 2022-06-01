@@ -45,4 +45,5 @@ public class QuizEndPoint {
 	public CategoriesResponse answerBasedOnQuestion(@RequestPayload GetCategoriesRequest request) {
 		return new CategoriesResponse(service.getCategories());
 	}
+	
 }

@@ -16,7 +16,6 @@ import com.mile.soap.client.app.quiz.UploadQuestionRequest;
 @Service
 public class SoapClient {
 	
-	@Autowired Jaxb2Marshaller marshaller;
 	@Autowired WebServiceTemplate template;
 	
 	public CategoriesResponse getCategories() {

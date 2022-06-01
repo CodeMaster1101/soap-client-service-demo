@@ -13,7 +13,7 @@
 	<artifactId>collection-management-soap</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<name>collection-management-soap</name>
-	<description>reforming certain collections based on endpoint</description>
+	<description>Quiz SOAP Service</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -27,7 +27,7 @@
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jdbc -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,6 +63,13 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>

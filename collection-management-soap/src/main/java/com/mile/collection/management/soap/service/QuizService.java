@@ -25,11 +25,9 @@ public class QuizService {
 	public List<Answer> getAnswersForQuestion(long id) {
 		return answerRepository.answersBasedOnQuestion(id);
 	}
-
 	
 	public int uploadNewQuestion(UploadQuestionRequest question) {
-		return questionRepository.save(new Question(null, question.getVal(), new ArrayList<>(), new ArrayList<>()));
-		
+		return questionRepository.save(new Question(null, question.getVal(), new ArrayList<>(), new ArrayList<>()));	
 	}
 	
 	public int removeAnswer(long id) {
