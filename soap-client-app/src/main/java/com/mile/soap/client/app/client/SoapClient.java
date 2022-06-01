@@ -1,9 +1,9 @@
 package com.mile.soap.client.app.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
+import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import com.mile.soap.client.app.quiz.AffectedRowsResponse;
 import com.mile.soap.client.app.quiz.AnswersForQuestionRequest;
@@ -14,7 +14,7 @@ import com.mile.soap.client.app.quiz.GetCategoriesRequest;
 import com.mile.soap.client.app.quiz.UploadQuestionRequest;
 
 @Service
-public class SoapClient {
+public class SoapClient extends WebServiceGatewaySupport{
 	
 	@Autowired WebServiceTemplate template;
 	
