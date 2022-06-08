@@ -29,6 +29,7 @@ public class SoapConfiguration {
 		defaultWsdl11Definition.setPortTypeName("QuizMainEndPoint");
 		defaultWsdl11Definition.setLocationUri("/ws");
 		defaultWsdl11Definition.setTargetNamespace("http://www.mile.com/collection/management/soap/Quiz");
+		defaultWsdl11Definition.setTransportUri("http://www.openuri.org/2002/04/soap/jms/");
 		defaultWsdl11Definition.setSchema(schema);
 		return defaultWsdl11Definition;
 	}

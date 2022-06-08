@@ -1,6 +1,7 @@
 package com.mile.soap.client.app.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
@@ -17,6 +18,7 @@ import com.mile.soap.client.app.quiz.UploadQuestionRequest;
 public class SoapClient extends WebServiceGatewaySupport{
 	
 	@Autowired WebServiceTemplate template;
+	@Autowired JmsTemplate jmsTemplate;
 	
 	public CategoriesResponse getCategories() {
 		return  (CategoriesResponse) template.marshalSendAndReceive("http://localhost:8083/ws", new GetCategoriesRequest());
@@ -37,5 +39,6 @@ public class SoapClient extends WebServiceGatewaySupport{
 	public AffectedRowsResponse uploadNewQuestion(UploadQuestionRequest q) {
 		return (AffectedRowsResponse) template.marshalSendAndReceive("http://localhost:8083/ws", q);
 	}
+	
 	
 }

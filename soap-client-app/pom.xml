@@ -23,6 +23,11 @@
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -51,7 +56,7 @@
 			<artifactId>javassist</artifactId>
 			<version>3.25.0-GA</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-test</artifactId>
@@ -73,7 +78,7 @@
 				<executions>
 					<execution>
 						<goals>
-								<goal>generate</goal>
+							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>

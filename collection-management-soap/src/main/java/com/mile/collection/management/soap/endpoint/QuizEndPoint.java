@@ -1,6 +1,7 @@
 package com.mile.collection.management.soap.endpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -20,30 +21,64 @@ public class QuizEndPoint {
 
 	private final static String NAMESPACE = "http://www.mile.com/collection/management/soap/Quiz";
 
+	@Autowired JmsTemplate jmsTemplate;
 	@Autowired QuizService service;
 
 	@ResponsePayload
 	@PayloadRoot(namespace = NAMESPACE, localPart = "AnswersForQuestionRequest" )
 	public AnswersResponse answerBasedOnQuestion(@RequestPayload AnswersForQuestionRequest request) {
-		return new AnswersResponse(service.getAnswersForQuestion(request.getId()));
+		AnswersResponse response = new AnswersResponse(service.getAnswersForQuestion(request.getId()));
+		try {
+			sendMsgtoDestination(response.toString());		
+			return response;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return response;
 	}
-	
+
 	@ResponsePayload
 	@PayloadRoot(namespace = NAMESPACE, localPart = "UploadQuestionRequest" )
 	public AffectedRowsResponse uploadNewQuestion(@RequestPayload UploadQuestionRequest request) {
-		return new AffectedRowsResponse(service.uploadNewQuestion(request));
+		AffectedRowsResponse response = new AffectedRowsResponse(service.uploadNewQuestion(request));
+		try {
+			sendMsgtoDestination(response.toString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return response;
 	}
-	
+
 	@ResponsePayload
 	@PayloadRoot(namespace = NAMESPACE, localPart = "DeleteAnswerRequest" )
 	public AffectedRowsResponse answerBasedOnQuestion(@RequestPayload DeleteAnswerRequest request) {
-		return new AffectedRowsResponse(service.removeAnswer(request.getId()));
+		AffectedRowsResponse response = new AffectedRowsResponse(service.removeAnswer(request.getId()));
+		try {
+			sendMsgtoDestination(response.toString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return response;
+
 	}
-	
+
 	@ResponsePayload
 	@PayloadRoot(namespace = NAMESPACE, localPart = "GetCategoriesRequest")
-	public CategoriesResponse answerBasedOnQuestion(@RequestPayload GetCategoriesRequest request) {
-		return new CategoriesResponse(service.getCategories());
+	public CategoriesResponse answerBasedOnQuestion( @RequestPayload GetCategoriesRequest request) {
+		CategoriesResponse response = new CategoriesResponse(service.getCategories());
+		try {
+			sendMsgtoDestination(response.toString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return response;
 	}
-	
+
+	private void sendMsgtoDestination(String response) {
+		jmsTemplate.convertAndSend("quiz_queue",response);
+	}
+
 }
