@@ -139,7 +139,7 @@
 </wsdl:operation>
 </wsdl:portType>
 <wsdl:binding name="QuizMainEndPointSoap11" type="tns:QuizMainEndPoint">
-<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<soap:binding style="document" transport="http://www.openuri.org/2002/04/soap/jms/"/>
 <wsdl:operation name="AffectedRows">
 <soap:operation soapAction=""/>
 <wsdl:output name="AffectedRowsResponse">

@@ -8,6 +8,7 @@
 
 package com.mile.collection.management.soap.quiz;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,9 +52,13 @@ import lombok.AllArgsConstructor;
 })
 @AllArgsConstructor
 @XmlRootElement(name = "Category")
-public class Category {
+public class Category implements Serializable{
 
-    protected Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2279430828879742771L;
+	protected Long id;
     protected String value;
     @XmlElement(name = "Answer")
     protected List<Answer> answer;

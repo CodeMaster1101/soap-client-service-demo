@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "id"
 })
 @XmlRootElement(name = "AnswersForQuestionRequest")
-public class AnswersForQuestionRequest {
+public class AnswersForQuestionRequest{
 
     protected long id;
 
